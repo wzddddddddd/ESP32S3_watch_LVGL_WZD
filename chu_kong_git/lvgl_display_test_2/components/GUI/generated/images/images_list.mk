@@ -1,0 +1,1 @@
+GEN_CSRCS += _novel_alpha_30x30.c _image_alpha_30x30.c _she_zhi_alpha_30x30.c _TXT_alpha_30x30.c _clock_alpha_30x30.c _WIFI_alpha_30x30.c _OTA_alpha_30x30.c

@@ -1,0 +1,51 @@
+## label: %label%
+## style: shape=%shape%;whiteSpace=wrap;html=1;rounded=%rounded%;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=2;
+## namespace: csvimport-
+## connect: {"from":"refs","to":"id","style":"endArrow=block;html=1;rounded=0;strokeColor=#000000;strokeWidth=2;"}
+## width: 220
+## height: 80
+## padding: 24
+## ignore: shape,rounded,refs
+## nodespacing: 48
+## levelspacing: 90
+## edgespacing: 36
+## layout: verticalflow
+# id,label,shape,rounded,refs
+start,"开始：进入SD卡综合应用与多媒体模块",mxgraph.flowchart.terminator,1,
+sd_init,"初始化SD卡接口并挂载FatFS文件系统",rectangle,0,start
+sd_ok,"SD卡挂载是否成功？",mxgraph.flowchart.decision,0,sd_init
+sd_fail,"挂载失败：提示异常并退出模块",mxgraph.flowchart.terminator,1,sd_ok
+scan,"扫描SD卡资源目录，建立图片、视频、小说等文件列表缓存",rectangle,0,sd_ok
+select,"用户在LVGL页面选择资源类型或具体文件",rectangle,0,scan
+branch,"根据文件类型进入对应业务流程",mxgraph.flowchart.decision,0,select
+
+img_open,"图片流程：读取用户选择的PNG/JPEG文件路径",mxgraph.flowchart.data,0,branch
+img_fs,"通过LVGL文件系统接口打开SD卡图片文件",rectangle,0,img_open
+img_chunk,"按固定字节块流式读取图像数据，降低堆内存峰值",rectangle,0,img_fs
+img_decode,"PNG/JPEG数据解码为屏幕可显示的像素块",rectangle,0,img_chunk
+img_map,"将像素块映射到LVGL图片控件或表盘背景",rectangle,0,img_decode
+img_cache,"使用图片缓存减少重复解码开销",rectangle,0,img_map
+img_end,"完成静态图像显示或壁纸更新",mxgraph.flowchart.terminator,1,img_cache
+
+video_open,"视频流程：读取用户选择的视频文件名",mxgraph.flowchart.data,0,branch
+video_resolve,"storage_worker解析完整路径并识别视频格式",rectangle,0,video_open
+video_page,"切换到video_player页面并调用video_player_start()",rectangle,0,video_resolve
+video_task,"创建video_task并分配多帧缓冲区",rectangle,0,video_page
+video_format,"判断视频格式：MJPEG或RGB565",mxgraph.flowchart.decision,0,video_task
+video_mjpeg,"MJPEG：读取压缩帧并调用jpg2rgb565()解码",rectangle,0,video_format
+video_rgb,"RGB565：直接读取一帧原始像素数据",rectangle,0,video_format
+video_publish,"publish_filled_frame()发布帧并发送LVGL_MSG_VIDEO_FRAME",rectangle,0,"video_mjpeg,video_rgb"
+video_show,"LVGL任务更新lv_img控件并标记当前帧已显示",rectangle,0,video_publish
+video_loop,"是否继续播放？",mxgraph.flowchart.decision,0,video_show
+video_end,"停止播放或返回视频列表",mxgraph.flowchart.terminator,1,video_loop
+
+txt_open,"TXT流程：读取用户选择的小说文件名",mxgraph.flowchart.data,0,branch
+txt_resolve,"storage_worker根据缓存解析完整文件路径",rectangle,0,txt_open
+txt_nvs_read,"从NVS读取该文件历史Offset偏移量",rectangle,0,txt_resolve
+txt_seek,"fopen()打开文件并将文件指针跳转到历史偏移",rectangle,0,txt_nvs_read
+txt_page,"按屏幕显示容量切片读取当前页文本",rectangle,0,txt_seek
+txt_msg,"发送LVGL_MSG_NOVEL_PAGE_READY并更新阅读界面Label",rectangle,0,txt_page
+txt_action,"用户执行翻页、退出或系统进入休眠？",mxgraph.flowchart.decision,0,txt_msg
+txt_turn,"翻页：更新文件偏移并读取上一页或下一页",rectangle,0,txt_action
+txt_save,"退出/休眠：保存文件路径与Offset到NVS",rectangle,0,txt_action
+txt_end,"下次打开时从断点继续显示",mxgraph.flowchart.terminator,1,txt_save

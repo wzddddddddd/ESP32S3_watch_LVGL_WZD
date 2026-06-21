@@ -1,0 +1,6 @@
+{
+  "tools": {
+    "idf-activate": "C:/Espressif/frameworks/esp-idf-v5.3.1/export.ps1",
+    "idf-py": "C:/Espressif/python_env/idf5.3_py3.12_env/Scripts/python.exe C:/Espressif/frameworks/esp-idf-v5.3.1/tools/idf.py"
+  }
+}

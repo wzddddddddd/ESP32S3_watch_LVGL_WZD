@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(C:/Espressif/frameworks/esp-idf-v5.3.1/tools/idf.py build:*)",
+      "Bash(sed -i 's/lv_font_montserratMedium_16/songti_font_16/g' setup_scr_screen_wifi_set.c)",
+      "Bash(sed -i 's/lv_font_montserratMedium_12/songti_font_16/g' setup_scr_screen_wifi_set.c)",
+      "Bash(sed -i 's/lv_font_montserratMedium_14/songti_font_16/g' setup_scr_screen_wifi_set.c)",
+      "Bash(sed -i 's/lv_font_montserratMedium_12/songti_font_16/g' setup_scr_novel_display.c)",
+      "Bash(sed -i 's/lv_font_montserratMedium_14/songti_font_16/g' setup_scr_screen_img_list.c)",
+      "Bash(python -c \"from PIL import Image; print\\('PIL available'\\)\")",
+      "Bash(python)",
+      "Bash(python -c ':*)",
+      "Bash(python -c:*)",
+      "Bash(esp-idf-size.py build/lvgl_display.elf)",
+      "Bash(xtensa-esp32-elf-size build/lvgl_display.elf)",
+      "Bash(C:/Users/86177/Desktop/ESP32_chukong/chu_kong_git/lvgl_display_test_2/.venv/Scripts/python.exe C:/Users/86177/Desktop/ESP32_chukong/chu_kong_git/lvgl_display_test_2/../esp-idf/tools/esp-idf-size.py build/lvgl_display.elf)",
+      "Bash(ls /c/Users/86177/Desktop/ESP32_chukong/esp-idf/tools/*.py)",
+      "Bash(python C:/Users/86177/Desktop/ESP32_chukong/esp-idf/tools/esp-idf-size.py build/lvgl_display.elf)",
+      "Bash(idf.py size:*)",
+      "Bash(git *)",
+      "Bash(cd *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(mkdir *)",
+      "Bash(echo *)"
+    ]
+  }
+}

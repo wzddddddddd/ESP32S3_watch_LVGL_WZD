@@ -1,0 +1,20 @@
+idf_component_register(
+    SRCS
+        "onenet_ota.c"
+        "onenet_token.c"
+        "onenet_mqtt.c"
+        "onenet_dm.c"
+        "local_ota.c"
+    INCLUDE_DIRS "."
+    REQUIRES
+        esp_partition
+        esp_app_format
+        esp_http_client
+        esp_https_ota
+        mqtt
+        json
+        freertos
+        nvs_flash
+        app_update
+        bsp
+)
