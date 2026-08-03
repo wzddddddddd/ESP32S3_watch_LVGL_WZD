@@ -1,5 +1,7 @@
 # ESP32-S3 Low-Power Touch Watch Based on LVGL
 
+> **重要声明：板子不是我做的，板子作者为 COCONUT_E。** 原作者 B 站视频： [BV1LPQQBAEbr](https://www.bilibili.com/video/BV1LPQQBAEbr)，开源硬件页面：[OSHWHub - Smart Watch Multi-Function Terminal](https://oshwhub.com/coconet/smart-watch-multi-function-termi)。
+
 基于 `ESP32-S3R8`、`FreeRTOS` 与 `LVGL` 实现的低功耗触控智能手表原型项目。该项目围绕“小型 MCU 平台上实现可交互、可联网、可升级、可低功耗运行的图形化终端”这一目标展开，完成了表盘显示、触控交互、SD 卡多媒体浏览、小说阅读、时间同步、天气获取、双路径 OTA 升级以及休眠唤醒等完整功能链路。
 
 这份仓库不仅包含主工程代码，还保留了 PCB、3D 结构、字体资源、演示素材以及答辩文档，适合从“软硬件一体化毕业设计 / 嵌入式项目作品集”的角度进行展示。
@@ -190,6 +192,8 @@ chu_kong_git/lvgl_display_test_2
 
 ## Hardware / Software Stack
 
+> **板子不是我做的，板子作者为 COCONUT_E。** 原作者 B 站视频： [BV1LPQQBAEbr](https://www.bilibili.com/video/BV1LPQQBAEbr)，开源硬件页面：[OSHWHub - Smart Watch Multi-Function Terminal](https://oshwhub.com/coconet/smart-watch-multi-function-termi)。
+
 ### Hardware
 
 - MCU：`ESP32-S3R8`
@@ -276,6 +280,8 @@ idf.py -p <PORT> flash monitor
 - 系统架构图缩略图
 
 ## Notes
+
+> **板子不是我做的，板子作者为 COCONUT_E。** 原作者 B 站视频： [BV1LPQQBAEbr](https://www.bilibili.com/video/BV1LPQQBAEbr)，开源硬件页面：[OSHWHub - Smart Watch Multi-Function Terminal](https://oshwhub.com/coconet/smart-watch-multi-function-termi)。
 
 - 仓库当前保留了较多过程性文件、素材和参考内容，这是项目开发痕迹的一部分
 - 若后续希望进一步提升仓库专业度，可以再做一次目录精简，把主工程、资料、素材分层整理
