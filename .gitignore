@@ -67,3 +67,6 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Local generated outputs
+/chu_kong_git/lvgl_display_test_2/outputs/
